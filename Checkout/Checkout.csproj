@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiscountType.cs" />
+    <Compile Include="Interfaces\ISimpleOffers.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="PointOfSale.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Discounts\BuyOneGetOne.cs" />
+    <Compile Include="Discounts\ThreeForTwo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

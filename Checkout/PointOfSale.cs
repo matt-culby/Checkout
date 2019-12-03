@@ -63,52 +63,15 @@ namespace Checkout
             switch (discountType)
             {
                 case DiscountType.BuyOneGetOne:
-                    ApplyBuyOneGetOne(item, discountedItem);
+                    new BuyOneGetOne().ApplyOffer(item, discountedItem);
                     break;
                 case DiscountType.ThreeForTwo:
-                    ApplyThreeForTwo(item, discountedItem);
+                    new ThreeForTwo().ApplyOffer(item, discountedItem);
                     break;
                 default:
                     break;
             }
-        }
-
-        private void ApplyBuyOneGetOne(Item item, string discountedItem)
-        {
-            if (item.GetName() == discountedItem)
-            {
-                if (item.Quantity >= 2)
-                {
-                    if (item.Quantity % 2 == 0)
-                    {
-                        item.Quantity /= 2;
-                    }
-                    else
-                    {
-                        var discountedQuantity = (item.Quantity - item.Quantity % 2) / 2;
-                        item.Quantity = discountedQuantity + item.Quantity % 2;
-                    }
-                }
-            }
-        }
-
-        private void ApplyThreeForTwo(Item item, string discountedItem)
-        {
-            if (item.GetName() == discountedItem)
-            {
-                if (item.Quantity >= 3)
-                {
-                    if (item.Quantity % 3 == 0)
-                    {
-                        item.Quantity = (item.Quantity / 3) * 2;
-                    }
-                    else
-                    {
-                        item.Quantity -= (item.Quantity / 3);
-                    }
-                }
-            }
-        }
+        }   
 
         private void AddItemsToCart()
         {
