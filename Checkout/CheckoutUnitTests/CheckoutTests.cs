@@ -54,6 +54,91 @@ namespace CheckoutTests
             Assert.AreEqual(2.05M, orderTotal);
         }
 
+        [TestMethod]
+        public void AddListOfItemsAndCheckBuyOneGetOne()
+        {
+            decimal orderTotal;
+
+            List<string> itemNames = new List<string>
+            {
+                "Apple",
+                "Apple",
+                "Orange"
+            };
+
+            _pointOfSale.ScanItemsWithDiscountCheck(itemNames, DiscountType.BuyOneGetOne, "Apple");
+
+            orderTotal = _pointOfSale.TotalOrder();
+
+            Assert.AreEqual(.85M, orderTotal);
+        }
+
+        [TestMethod]
+        public void AddListOfItemsAndCheckThreeForTwo()
+        {
+            decimal orderTotal;
+
+            List<string> itemNames = new List<string>
+            {
+                "Orange",
+                "Apple",
+                "Orange",
+                "Orange"
+            };
+
+            _pointOfSale.ScanItemsWithDiscountCheck(itemNames, DiscountType.ThreeForTwo, "Orange");
+
+            orderTotal = _pointOfSale.TotalOrder();
+
+            Assert.AreEqual(1.1M, orderTotal);
+        }
+
+        [TestMethod]
+        public void AddListOfItemsAndCheckBuyOneGetOneMany()
+        {
+            decimal orderTotal;
+
+            List<string> itemNames = new List<string>
+            {
+                "Apple",
+                "Apple",
+                "Orange",
+                "Orange",
+                "Apple",
+                "Apple"
+            };
+
+            _pointOfSale.ScanItemsWithDiscountCheck(itemNames, DiscountType.BuyOneGetOne, "Apple");
+
+            orderTotal = _pointOfSale.TotalOrder();
+
+            Assert.AreEqual(1.7M, orderTotal);
+        }
+
+        [TestMethod]
+        public void AddListOfItemsAndCheckThreeForTwoMany()
+        {
+            decimal orderTotal;
+
+            List<string> itemNames = new List<string>
+            {
+                "Orange",
+                "Apple",
+                "Orange",
+                "Orange",
+                "Orange",
+                "Orange",
+                "Orange",
+                "Apple"
+            };
+
+            _pointOfSale.ScanItemsWithDiscountCheck(itemNames, DiscountType.ThreeForTwo, "Orange");
+
+            orderTotal = _pointOfSale.TotalOrder();
+
+            Assert.AreEqual(2.2M, orderTotal);
+        }
+
         private Dictionary<string, decimal> GetPrices()
         {
             var prices = new Dictionary<string, decimal>

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Discount.cs" />
+    <Compile Include="DiscountType.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="PointOfSale.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
